@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: scale(1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .accept {
+            background-color: #4caf50;
+        }
+
+        .decline {
+            background-color: #f44336;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amalia ¿Quieres ser mi novia?</h1>
+        <button class="btn accept" onclick="handleAccept()">Acepto</button>
+        <button class="btn decline" onclick="handleDecline()">Por el momento, no</button>
+        <img src="tuyyo.png">
+    </div>
+
+    <audio id="happy-song" src="happy.mp3"></audio>
+    <audio id="sad-song" src="sad.mp3"></audio>
+
+    <script>
+        function handleAccept() {
+            stopMusic();
+            document.getElementById("happy-song").play();
+            alert("¡Te Quiero Mucho! 😊");
+        }
+
+        function handleDecline() {
+            stopMusic();
+            document.getElementById("sad-song").play();
+            alert("Está bien, respeto tu decisión.");
+        }
+
+        function stopMusic() {
+            const happySong = document.getElementById("happy-song");
+            const sadSong = document.getElementById("sad-song");
+            happySong.pause();
+            sadSong.pause();
+            happySong.currentTime = 0;
+            sadSong.currentTime = 0;
+        }
+    </script>
+</body>
+</html>
