@@ -8,13 +8,13 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             margin: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            transition: background 1s ease, filter 1s ease;
         }
 
         .container {
@@ -23,6 +23,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             width: 300px;
+            transition: filter 1s ease;
         }
 
         h1 {
@@ -66,6 +67,23 @@
             height: auto;
             border-radius: 10px;
             margin-top: 15px;
+            transition: filter 1s ease;
+        }
+
+        /* Estilos para corações e fundo triste */
+        .heart-background {
+            background: url('https://www.transparenttextures.com/patterns/language-of-love.png');
+            background-size: cover;
+            animation: heart-animation 1s infinite alternate;
+        }
+
+        @keyframes heart-animation {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -74,7 +92,7 @@
         <h1>Amalia ¿Quieres ser mi novia?</h1>
         <button class="btn accept" onclick="handleAccept()">Acepto</button>
         <button class="btn decline" onclick="handleDecline()">Por el momento, no</button>
-        <img src="tuyyo.jpeg">
+        <img src="tuyyo.jpeg" id="image">
     </div>
 
     <audio id="happy-song" src="happy.mp3"></audio>
@@ -84,11 +102,17 @@
         function handleAccept() {
             stopMusic();
             document.getElementById("happy-song").play();
+            document.body.classList.add("heart-background");
+            document.getElementById("image").style.filter = "none";
+            document.getElementById("image").style.transition = "filter 1s ease";
         }
 
         function handleDecline() {
             stopMusic();
             document.getElementById("sad-song").play();
+            document.body.style.backgroundColor = "#3a3a3a"; // Cor triste
+            document.getElementById("image").style.filter = "grayscale(100%)"; // Escala de cinza
+            document.body.classList.remove("heart-background");
         }
 
         function stopMusic() {
