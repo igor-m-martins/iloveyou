@@ -74,7 +74,7 @@
         <h1>Amalia ¿Quieres ser mi novia?</h1>
         <button class="btn accept" onclick="handleAccept()">Acepto</button>
         <button class="btn decline" onclick="handleDecline()">Por el momento, no</button>
-        <img src="tuyyo.png">
+        <img src="tuyyo.jpeg">
     </div>
 
     <audio id="happy-song" src="happy.mp3"></audio>
@@ -84,13 +84,11 @@
         function handleAccept() {
             stopMusic();
             document.getElementById("happy-song").play();
-            alert("¡Te Quiero Mucho! 😊");
         }
 
         function handleDecline() {
             stopMusic();
             document.getElementById("sad-song").play();
-            alert("Está bien, respeto tu decisión.");
         }
 
         function stopMusic() {
